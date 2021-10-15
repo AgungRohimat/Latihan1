@@ -136,6 +136,51 @@ Route::get('data-siswa', function () {
     return view('data-siswa', compact('data'));
 });
 
+Route::get('siswa', function () {
+    $siswas = [
+        ['id' => 1,
+            'nama' => 'Agung',
+            'username' => 'agung',
+            'email' => 'agung@gmail.com',
+            'alamat' => 'Bandung',
+            'mapel' => [
+                'mapel1' => 'Bahasa Indonesia',
+                'mapel2' => 'Bahasa Inggris',
+                'mapel3' => 'Bahasa Jepang',
+            ],
+        ],
+
+    ];
+
+    return view('siswa', compact('siswas'));
+});
+
+Route::get('hobi', function () {
+    $hobis = [
+        ['nis' => 1,
+            'nama' => 'Agung',
+            'kelas' => 'XII RPL 1',
+            'hobi' => [
+                'hobi1' => 'Bermain Basket',
+                'hobi2' => 'Olahraga',
+                'hobi3' => 'Rebahan',
+            ],
+        ],
+        ['nis' => 2,
+            'nama' => 'Cecep',
+            'kelas' => 'XII RPL 1',
+            'hobi' => [
+                'hobi1' => 'Bermain Game',
+                'hobi2' => 'Nonton Film',
+                'hobi3' => 'Rebahan',
+            ],
+        ],
+
+    ];
+
+    return view('hobi', compact('hobis'));
+});
+
 // Route::get('/biodata', function () {
 //     echo "<h1>My Biodata</h1> <br>
 // Nama : Agung Rohimat <br>
