@@ -1,5 +1,9 @@
 <?php
-
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\MyController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,169 +21,169 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('posting/{nama?}/{ttl?}/{alamat?}',
-    function ($nama, $ttl, $alamat) {
-        return view('post',
-            [
-                'a' => $nama,
-                'b' => $ttl,
-                'c' => $alamat,
+// Route::get('posting/{nama?}/{ttl?}/{alamat?}',
+//     function ($nama, $ttl, $alamat) {
+//         return view('post',
+//             [
+//                 'a' => $nama,
+//                 'b' => $ttl,
+//                 'c' => $alamat,
 
-            ]);
-    });
+//             ]);
+//     });
 
-Route::get('/hal2', function () {
+// Route::get('/hal2', function () {
 
-    $Nama = "Agung Rohimat";
-    $TTL = "Bandung, 17-02-03";
-    $Alamat = "Kp.Cilisung";
-    $No = "089665496616";
-    $jk = "Laki-Laki";
-    return view('halo', compact('Nama', 'TTL', 'Alamat', 'No', 'jk'));
-});
+//     $Nama = "Agung Rohimat";
+//     $TTL = "Bandung, 17-02-03";
+//     $Alamat = "Kp.Cilisung";
+//     $No = "089665496616";
+//     $jk = "Laki-Laki";
+//     return view('halo', compact('Nama', 'TTL', 'Alamat', 'No', 'jk'));
+// });
 
-Route::get('blog', function () {
-    $data = [
-        ['id' => 1, 'title' => 'Olahraga', 'content' => 'Sepak Bola'],
-        ['id' => 2, 'title' => 'Ekonomi', 'content' => 'Hutang RI ke Luar Negri'],
+// Route::get('blog', function () {
+//     $data = [
+//         ['id' => 1, 'title' => 'Olahraga', 'content' => 'Sepak Bola'],
+//         ['id' => 2, 'title' => 'Ekonomi', 'content' => 'Hutang RI ke Luar Negri'],
 
-    ];
+//     ];
 
-    return view('blog', compact('data'));
-});
+//     return view('blog', compact('data'));
+// });
 
-Route::get('data-siswa', function () {
-    $data = [
-        [
-            'nis' => 1,
-            'nama' => 'Agung',
-            'jk' => 'Laki-Laki',
-            'jurusan' => 'RPL',
-            'kelas' => 'XII',
-            'wali' => 'Bu Herna',
-        ],
-        [
-            'nis' => 2,
-            'nama' => 'Riska',
-            'jk' => 'Perempuan',
-            'jurusan' => 'RPL',
-            'kelas' => 'XII',
-            'wali' => 'Bu Herna',
-        ],
-        [
-            'nis' => 3,
-            'nama' => 'Farid',
-            'jk' => 'Laki-Laki',
-            'jurusan' => 'RPL',
-            'kelas' => 'XII',
-            'wali' => 'Bu Herna',
-        ],
-        [
-            'nis' => 4,
-            'nama' => 'Maudy',
-            'jk' => 'Perempuan',
-            'jurusan' => 'RPL',
-            'kelas' => 'XII',
-            'wali' => 'Bu Herna',
-        ],
-        [
-            'nis' => 5,
-            'nama' => 'Kidam',
-            'jk' => 'Laki-Laki',
-            'jurusan' => 'RPL',
-            'kelas' => 'XII',
-            'wali' => 'Miss Yanti',
-        ],
-        [
-            'nis' => 6,
-            'nama' => 'Ridwan',
-            'jk' => 'Laki-Laki',
-            'jurusan' => 'RPL',
-            'kelas' => 'XII',
-            'wali' => 'Miss Yanti',
-        ],
-        [
-            'nis' => 7,
-            'nama' => 'Taufiq',
-            'jk' => 'Laki-Laki',
-            'jurusan' => 'TKR',
-            'kelas' => 'XII',
-            'wali' => 'Miss Maya',
-        ],
-        [
-            'nis' => 8,
-            'nama' => 'Gilang',
-            'jk' => 'Laki-Laki',
-            'jurusan' => 'TKR',
-            'kelas' => 'XII',
-            'wali' => 'Miss Maya',
-        ],
-        [
-            'nis' => 9,
-            'nama' => 'Hendra',
-            'jk' => 'Laki-Laki',
-            'jurusan' => 'TKR',
-            'kelas' => 'XII',
-            'wali' => 'Bu Isma',
-        ],
-        [
-            'nis' => 10,
-            'nama' => 'Yuda',
-            'jk' => 'Laki-Laki',
-            'jurusan' => 'TKR',
-            'kelas' => 'XII',
-            'wali' => 'Bu Isma',
-        ],
+// Route::get('data-siswa', function () {
+//     $data = [
+//         [
+//             'nis' => 1,
+//             'nama' => 'Agung',
+//             'jk' => 'Laki-Laki',
+//             'jurusan' => 'RPL',
+//             'kelas' => 'XII',
+//             'wali' => 'Bu Herna',
+//         ],
+//         [
+//             'nis' => 2,
+//             'nama' => 'Riska',
+//             'jk' => 'Perempuan',
+//             'jurusan' => 'RPL',
+//             'kelas' => 'XII',
+//             'wali' => 'Bu Herna',
+//         ],
+//         [
+//             'nis' => 3,
+//             'nama' => 'Farid',
+//             'jk' => 'Laki-Laki',
+//             'jurusan' => 'RPL',
+//             'kelas' => 'XII',
+//             'wali' => 'Bu Herna',
+//         ],
+//         [
+//             'nis' => 4,
+//             'nama' => 'Maudy',
+//             'jk' => 'Perempuan',
+//             'jurusan' => 'RPL',
+//             'kelas' => 'XII',
+//             'wali' => 'Bu Herna',
+//         ],
+//         [
+//             'nis' => 5,
+//             'nama' => 'Kidam',
+//             'jk' => 'Laki-Laki',
+//             'jurusan' => 'RPL',
+//             'kelas' => 'XII',
+//             'wali' => 'Miss Yanti',
+//         ],
+//         [
+//             'nis' => 6,
+//             'nama' => 'Ridwan',
+//             'jk' => 'Laki-Laki',
+//             'jurusan' => 'RPL',
+//             'kelas' => 'XII',
+//             'wali' => 'Miss Yanti',
+//         ],
+//         [
+//             'nis' => 7,
+//             'nama' => 'Taufiq',
+//             'jk' => 'Laki-Laki',
+//             'jurusan' => 'TKR',
+//             'kelas' => 'XII',
+//             'wali' => 'Miss Maya',
+//         ],
+//         [
+//             'nis' => 8,
+//             'nama' => 'Gilang',
+//             'jk' => 'Laki-Laki',
+//             'jurusan' => 'TKR',
+//             'kelas' => 'XII',
+//             'wali' => 'Miss Maya',
+//         ],
+//         [
+//             'nis' => 9,
+//             'nama' => 'Hendra',
+//             'jk' => 'Laki-Laki',
+//             'jurusan' => 'TKR',
+//             'kelas' => 'XII',
+//             'wali' => 'Bu Isma',
+//         ],
+//         [
+//             'nis' => 10,
+//             'nama' => 'Yuda',
+//             'jk' => 'Laki-Laki',
+//             'jurusan' => 'TKR',
+//             'kelas' => 'XII',
+//             'wali' => 'Bu Isma',
+//         ],
 
-    ];
+//     ];
 
-    return view('data-siswa', compact('data'));
-});
+//     return view('data-siswa', compact('data'));
+// });
 
-Route::get('siswa', function () {
-    $siswas = [
-        ['id' => 1,
-            'nama' => 'Agung',
-            'username' => 'agung',
-            'email' => 'agung@gmail.com',
-            'alamat' => 'Bandung',
-            'mapel' => [
-                'mapel1' => 'Bahasa Indonesia',
-                'mapel2' => 'Bahasa Inggris',
-                'mapel3' => 'Bahasa Jepang',
-            ],
-        ],
+// Route::get('siswa', function () {
+//     $siswas = [
+//         ['id' => 1,
+//             'nama' => 'Agung',
+//             'username' => 'agung',
+//             'email' => 'agung@gmail.com',
+//             'alamat' => 'Bandung',
+//             'mapel' => [
+//                 'mapel1' => 'Bahasa Indonesia',
+//                 'mapel2' => 'Bahasa Inggris',
+//                 'mapel3' => 'Bahasa Jepang',
+//             ],
+//         ],
 
-    ];
+//     ];
 
-    return view('siswa', compact('siswas'));
-});
+//     return view('siswa', compact('siswas'));
+// });
 
-Route::get('hobi', function () {
-    $hobis = [
-        ['nis' => 1,
-            'nama' => 'Agung',
-            'kelas' => 'XII RPL 1',
-            'hobi' => [
-                'hobi1' => 'Bermain Basket',
-                'hobi2' => 'Olahraga',
-                'hobi3' => 'Rebahan',
-            ],
-        ],
-        ['nis' => 2,
-            'nama' => 'Cecep',
-            'kelas' => 'XII RPL 1',
-            'hobi' => [
-                'hobi1' => 'Bermain Game',
-                'hobi2' => 'Nonton Film',
-                'hobi3' => 'Rebahan',
-            ],
-        ],
+// Route::get('hobi', function () {
+//     $hobis = [
+//         ['nis' => 1,
+//             'nama' => 'Agung',
+//             'kelas' => 'XII RPL 1',
+//             'hobi' => [
+//                 'hobi1' => 'Bermain Basket',
+//                 'hobi2' => 'Olahraga',
+//                 'hobi3' => 'Rebahan',
+//             ],
+//         ],
+//         ['nis' => 2,
+//             'nama' => 'Cecep',
+//             'kelas' => 'XII RPL 1',
+//             'hobi' => [
+//                 'hobi1' => 'Bermain Game',
+//                 'hobi2' => 'Nonton Film',
+//                 'hobi3' => 'Rebahan',
+//             ],
+//         ],
 
-    ];
+//     ];
 
-    return view('hobi', compact('hobis'));
-});
+//     return view('hobi', compact('hobis'));
+// });
 
 // Route::get('/biodata', function () {
 //     echo "<h1>My Biodata</h1> <br>
@@ -228,24 +232,55 @@ Route::get('hobi', function () {
 
 //     });
 
-Route::get('/pesan/{makanan?}/{minuman?}/{cemilah?}', function
-    ($M = "", $M1 = "", $C = "") {
+// Route::get('/pesan/{makanan?}/{minuman?}/{cemilah?}', function
+//     ($M = "", $M1 = "", $C = "") {
 
-        if ($M) {
-            echo "Anda Memesan : <br>";
-            echo " <b>Makanan : " . $M . "</b><br>";
-            if ($M = $M1) {
+//         if ($M) {
+//             echo "Anda Memesan : <br>";
+//             echo " <b>Makanan : " . $M . "</b><br>";
+//             if ($M = $M1) {
 
-                echo "<b>Minuman : " . $M1 . "</b><br>";
-                if ($M1 = $C) {
+//                 echo "<b>Minuman : " . $M1 . "</b><br>";
+//                 if ($M1 = $C) {
 
-                    echo "<b>Cemilan : " . $C . "</b>";
-                }
-            }
+//                     echo "<b>Cemilan : " . $C . "</b>";
+//                 }
+//             }
 
-        } else {
+//         } else {
 
-            echo "<b>Anda Tidak Memesan</b>";
-        }
+//             echo "<b>Anda Tidak Memesan</b>";
+//         }
 
-    });
+//     });
+
+// Route::get('/tesmodel', function () {
+//     $query = App\Models\Post::all();
+//     return $query;
+// });
+
+// Route::get('/test-post', function () {
+//     $query = App\Models\Post::all();
+//     return view('test-post', compact('query'));
+// });
+
+// Route::get('/tesbio', function () {
+//     $query = App\Models\Biodatas::all();
+//     return $query;
+// });
+
+// Route::get('/biodatas', function () {
+//     $query = App\Models\Biodatas::all();
+//     return view('biodatas', compact('query'));
+// });
+
+// Route::get('/contoh', function () {
+//     return view('sample');
+// });
+
+Route::get('/contoh', [MyController::class, 'tampilkan']);
+Route::get('/artikel', [PostController::class, 'data']);
+
+Route::get('/barang', [BarangController::class, 'barang']);
+Route::get('/pesanan', [PesananController::class, 'pesanan']);
+Route::get('/pembelian', [PembelianController::class, 'pembelian']);
