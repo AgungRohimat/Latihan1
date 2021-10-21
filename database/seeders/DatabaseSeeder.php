@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(BiodatasTableSeeder::class);
         $this->call(BarangTableSeeder::class);
         $this->call(PesananTableSeeder::class);
-        $this->call(PembelianTableSeeder::class);
+        $this->call(PembeliansTableSeeder::class);
+        $this->call(PembelisTableSeeder::class);
+        $this->call(SupliersTableSeeder::class);
 
     }
 }

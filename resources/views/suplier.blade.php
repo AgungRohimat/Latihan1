@@ -7,12 +7,14 @@
     <title></title>
 </head>
 <body>
-    @foreach($p as $pembelian )
-    Id : {{$pembelian->id_pembelian}}<br>
-    Nama Barang : {{$pembelian->nama_barang}} <br>
-    Harga Beli : {{$pembelian->nama_suplier}}<br>
-    Harga Beli : {{$pembelian->qty}}<br>
-    Harga Jual : {{$pembelian->tgl}}
+    @foreach($p as $suplier )
+    Id : {{$suplier->id_suplier}}<br>
+    Nama suplier : {{$suplier->nama}} <br>
+    Alamat : {{$suplier->alamat}}<br>
+    Kode Pos : {{$suplier->kode_pos}}<br>
+    Kota : {{$suplier->kota}}<br>
+
+
     <hr>
     @endforeach
 
